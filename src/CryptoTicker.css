@@ -1,0 +1,29 @@
+
+        .ticker-container {
+          width: 100%;
+          background: #642783; /* Color oscuro estilo Binance */
+          color: white;
+          padding: 8px 0;
+          overflow: hidden;
+          border-bottom: 1px solid #2b3139;
+          font-family: 'Inter', sans-serif;
+        }
+        .ticker-wrap {
+          display: flex;
+          width: 100%;
+        }
+        .ticker-move {
+          display: flex;
+          white-space: nowrap;
+          animation: ticker-animation 10s linear infinite;
+        }
+        .ticker-item {
+          display: inline-block;
+          padding: 0 2.5rem;
+          font-size: 14px;
+        }
+        .price-value {
+          margin-left: 8px;
+          font-variant-numeric: tabular-nums; /* Evita que los números salten */
+        }
+       
