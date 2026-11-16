@@ -1,29 +1,112 @@
+.ticker-container {
+  position: relative;
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border, #29394c);
+  background: #101927;
+  color: #eef2f8;
+  font-family: inherit;
+}
 
-        .ticker-container {
-          width: 100%;
-          background: #642783; /* Color oscuro estilo Binance */
-          color: white;
-          padding: 8px 0;
-          overflow: hidden;
-          border-bottom: 1px solid #2b3139;
-          font-family: 'Inter', sans-serif;
-        }
-        .ticker-wrap {
-          display: flex;
-          width: 100%;
-        }
-        .ticker-move {
-          display: flex;
-          white-space: nowrap;
-          animation: ticker-animation 10s linear infinite;
-        }
-        .ticker-item {
-          display: inline-block;
-          padding: 0 2.5rem;
-          font-size: 14px;
-        }
-        .price-value {
-          margin-left: 8px;
-          font-variant-numeric: tabular-nums; /* Evita que los números salten */
-        }
-       
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ticker-container .ticker-move {
+  display: flex;
+  width: max-content;
+  animation: ticker-animation 35s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-container:hover .ticker-move {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 25px;
+  font-size: 0.76rem;
+}
+
+.ticker-symbol {
+  font-weight: 750;
+}
+
+.ticker-bitcoin {
+  color: #f5ad3c;
+}
+
+.ticker-ethereum {
+  color: #a4afff;
+}
+
+.ticker-solana {
+  color: #7de0be;
+}
+
+.ticker-xrp {
+  color: #c1ccdc;
+}
+
+.ticker-cardano {
+  color: #79b4ff;
+}
+
+.price-value {
+  color: #d7dfeb;
+  font-variant-numeric: tabular-nums;
+}
+
+.ticker-status {
+  position: absolute;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid #304054;
+  border-radius: 999px;
+  background: #101927;
+  color: #a8b5c6;
+  font-size: 0.62rem;
+  white-space: nowrap;
+}
+
+.ticker-status > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5de0b0;
+  box-shadow: 0 0 7px #5de0b077;
+}
+
+@keyframes ticker-animation {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 700px) {
+  .ticker-status {
+    right: 5px;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ticker-item {
+    padding-inline: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-container .ticker-move {
+    animation-duration: 120s;
+  }
+}

@@ -1,0 +1,377 @@
+.meteora-page {
+  --meteora-ink: #e8eef5;
+  --meteora-muted: #9aa8b8;
+  --meteora-panel: #111b29;
+  --meteora-panel-soft: #172436;
+  --meteora-border: #29394c;
+  --meteora-green: #45d6a0;
+  width: 100%;
+  max-width: 1120px;
+  margin: 24px auto 40px;
+  padding: clamp(18px, 4vw, 36px);
+  border: 1px solid var(--meteora-border);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 85% 0%, #163641 0, transparent 38%),
+    #0b1420;
+  color: var(--meteora-ink);
+  text-align: left;
+  box-shadow: 0 24px 70px #06101d45;
+}
+
+.meteora-page * {
+  box-sizing: border-box;
+}
+
+.meteora-header,
+.meteora-results-heading,
+.meteora-card-topline,
+.meteora-pool-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.meteora-eyebrow {
+  margin: 0 0 8px;
+  color: var(--meteora-green);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.meteora-header h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+}
+
+.meteora-description {
+  max-width: 670px;
+  margin: 12px 0 0;
+  color: var(--meteora-muted);
+  line-height: 1.65;
+}
+
+.meteora-refresh {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid #3c5269;
+  border-radius: 11px;
+  background: #182638;
+  color: var(--meteora-ink);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.meteora-refresh:hover:not(:disabled) {
+  border-color: var(--meteora-green);
+  background: #203348;
+}
+
+.meteora-refresh:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.meteora-spin {
+  animation: meteora-spin 1s linear infinite;
+}
+
+@keyframes meteora-spin {
+  to { transform: rotate(360deg); }
+}
+
+.meteora-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 21px;
+  color: var(--meteora-muted);
+  font-size: 0.8rem;
+}
+
+.meteora-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--meteora-green);
+  box-shadow: 0 0 12px #45d6a077;
+}
+
+.meteora-meta-separator {
+  color: #53667c;
+}
+
+.meteora-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 25px 0 32px;
+  padding: 16px;
+  border: 1px solid var(--meteora-border);
+  border-radius: 15px;
+  background: #101c2a;
+}
+
+.meteora-filters label {
+  display: grid;
+  gap: 8px;
+  color: #bbc7d5;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.meteora-filters input {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #34465b;
+  border-radius: 9px;
+  outline: none;
+  background: #0a1420;
+  color: var(--meteora-ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.meteora-filters input:focus {
+  border-color: #45d6a0;
+  box-shadow: 0 0 0 3px #45d6a01f;
+}
+
+.meteora-results-heading {
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.meteora-results-heading h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.meteora-results-heading p {
+  margin: 5px 0 0;
+  color: var(--meteora-muted);
+  font-size: 0.84rem;
+}
+
+.meteora-window {
+  padding: 7px 10px;
+  border: 1px solid #33495b;
+  border-radius: 999px;
+  color: #bac8d7;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.meteora-pool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.meteora-pool-card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid var(--meteora-border);
+  border-radius: 15px;
+  background: linear-gradient(145deg, #172638, #111b29);
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.meteora-pool-card:hover {
+  transform: translateY(-2px);
+  border-color: #426276;
+}
+
+.meteora-card-topline {
+  align-items: flex-start;
+}
+
+.meteora-card-topline h3 {
+  overflow: hidden;
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meteora-card-topline p {
+  margin: 5px 0 0;
+  color: var(--meteora-muted);
+  font-size: 0.79rem;
+}
+
+.meteora-trend-badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 9px;
+  border: 1px solid #28644f;
+  border-radius: 999px;
+  background: #133529;
+  color: var(--meteora-green);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.meteora-change {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 21px 0 17px;
+  color: var(--meteora-green);
+}
+
+.meteora-change span {
+  font-size: 2rem;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.meteora-change small {
+  color: var(--meteora-muted);
+  font-size: 0.78rem;
+}
+
+.meteora-pool-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 13px 0;
+  border-top: 1px solid #29394c;
+  border-bottom: 1px solid #29394c;
+}
+
+.meteora-pool-metrics div {
+  display: grid;
+  gap: 5px;
+}
+
+.meteora-pool-metrics span {
+  color: var(--meteora-muted);
+  font-size: 0.74rem;
+}
+
+.meteora-pool-metrics strong {
+  overflow: hidden;
+  font-size: 0.93rem;
+  text-overflow: ellipsis;
+}
+
+.meteora-pool-link {
+  justify-content: flex-start;
+  width: fit-content;
+  margin-top: 14px;
+  color: #a7d6ff;
+  font-size: 0.8rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.meteora-pool-link:hover {
+  color: #d3ecff;
+  text-decoration: underline;
+}
+
+.meteora-empty,
+.meteora-message {
+  padding: 20px;
+  border: 1px solid var(--meteora-border);
+  border-radius: 13px;
+  background: var(--meteora-panel);
+  color: #c4cfdb;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.meteora-message {
+  margin: -13px 0 24px;
+}
+
+.meteora-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-color: #793b43;
+  background: #321c25;
+  color: #ffd2d4;
+}
+
+.meteora-error button {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid #a85860;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.meteora-warning {
+  border-color: #665c38;
+  background: #2a281d;
+  color: #eedda5;
+}
+
+.meteora-disclaimer {
+  margin-top: 22px;
+  color: #8594a5;
+  font-size: 0.77rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .meteora-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .meteora-header,
+  .meteora-results-heading {
+    align-items: flex-start;
+  }
+
+  .meteora-header {
+    flex-direction: column;
+  }
+
+  .meteora-results-heading {
+    flex-direction: column;
+  }
+
+  .meteora-pool-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meteora-pool-card {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meteora-spin {
+    animation-duration: 2s;
+  }
+
+  .meteora-pool-card {
+    transition: none;
+  }
+}
