@@ -36,8 +36,9 @@ CryptoSchool es una aplicación educativa sobre criptoactivos. Presenta rutas de
 Clona el repositorio y entra en la carpeta del proyecto:
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone [github url front end](https://github.com/Pablo-German-Jimenez/crypto-school-pro)
 cd cryptofutureschoolFrontEnd
+
 ```
 
 Instala dependencias y ejecuta el servidor de desarrollo:
