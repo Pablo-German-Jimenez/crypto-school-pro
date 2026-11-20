@@ -1,132 +1,149 @@
 # CryptoSchool
 
-CryptoSchool es una aplicación educativa sobre criptoactivos. Presenta rutas de aprendizaje para conocer Bitcoin, blockchain, seguridad y finanzas descentralizadas, junto con una guía introductoria de activos digitales y una vista de pools de Meteora.
+![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-Auth-FFCA28?style=flat-square&logo=firebase&logoColor=black)
 
-> **Importante:** el contenido es informativo y no constituye asesoramiento financiero ni una recomendación de inversión. Los criptoactivos son volátiles y conllevan riesgos.
+CryptoSchool is an educational web application for exploring digital assets. It features structured learning paths covering Bitcoin, blockchain technology, wallet security, and decentralized finance (DeFi), alongside an introductory asset directory and a live Meteora liquidity pool explorer.
 
-## Funcionalidades
+> **Disclaimer:** All content is for informational purposes only and does not constitute financial advice or an investment recommendation. Digital assets are highly volatile and carry inherent risks.
 
-- Inicio con presentación de la academia y acceso a sus rutas de aprendizaje.
-- Catálogo de cursos con programas introductorios y páginas de detalle.
-- Buscador y filtro por categoría para explorar activos digitales.
-- Vista de demostración del panel de administración, con contenido de ejemplo.
-- Inicio de sesión con Firebase Authentication usando correo/contraseña o Google, restablecimiento de contraseña y opción para recordar la sesión.
-- Protección de la ruta `/administrator` para usuarios autenticados.
-- Cotizaciones de BTC, ETH, SOL, XRP y ADA mediante el stream público de Binance.
-- Explorador de pools DLMM de Meteora con filtros, actualización automática y enlaces a Solscan.
-- Diseño adaptable a móvil y control para alternar entre tema claro y oscuro.
-- Página 404 con navegación de regreso al contenido.
+## Features
 
-## Tecnologías
+- **Academy Overview:** Landing page introducing the platform and its core learning tracks.
+- **Course Catalog:** Introductory curricula with dedicated course detail views.
+- **Asset Explorer:** Searchable directory with category filters to browse digital assets.
+- **Admin Dashboard (Demo):** Preview of the administration panel populated with sample metrics and courses.
+- **Authentication:** Sign-in with Firebase Authentication (Email/Password or Google), password recovery, and session persistence ("Remember me").
+- **Protected Routes:** Access control restricting `/administrator` to authenticated users.
+- **Live Price Ticker:** Real-time market prices for BTC, ETH, SOL, XRP, and ADA powered by Binance's public WebSocket stream.
+- **Meteora DLMM Explorer:** Filterable pool tracker with auto-refresh and direct links to Solscan.
+- **Responsive UI & Theming:** Mobile-first layout with a light/dark mode toggle.
+- **Custom 404 Page:** Fallback view with quick navigation back to the main content.
 
-- React 19 y JavaScript
-- Vite 7
-- React Router 6
-- Bootstrap 5
-- Lucide React
-- Firebase Authentication (SDK modular)
+## Tech Stack
 
-## Requisitos
+- **Core:** React 19, JavaScript (ES6+), Vite 7
+- **Routing & UI:** React Router 6, Bootstrap 5, Lucide React
+- **Authentication:** Firebase Authentication (Modular SDK)
 
-- Node.js compatible con Vite 7 (Node.js 20.19+ o 22.12+).
-- npm.
+## Prerequisites
 
-## Instalación y uso
+- **Node.js:** Version compatible with Vite 7 (`20.19+` or `22.12+`)
+- **Package Manager:** npm
 
-Clona el repositorio y entra en la carpeta del proyecto:
+## Getting Started
+
+Clone the repository and navigate into the project directory:
 
 ```bash
-git clone [github url front end](https://github.com/Pablo-German-Jimenez/crypto-school-pro)
+git clone [https://github.com/Pablo-German-Jimenez/crypto-school-pro.git](https://github.com/Pablo-German-Jimenez/crypto-school-pro.git)
 cd cryptofutureschoolFrontEnd
-
 ```
 
-Instala dependencias y ejecuta el servidor de desarrollo:
+Install dependencies and start the local development server:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Vite mostrará la dirección local en la terminal (habitualmente `http://localhost:5173`). Para comprobar la versión de producción:
+Vite will serve the app locally (typically at `http://localhost:5173`).
 
-```bash
-npm run build
-npm run preview
-```
+### Additional Scripts
 
-Para ejecutar ESLint:
+- **Build & Preview Production:**
+  ```bash
+  npm run build
+  npm run preview
+  ```
+- **Run Linter:**
+  ```bash
+  npm run lint
+  ```
 
-```bash
-npm run lint
-```
+## Firebase Authentication Setup
 
-## Configurar Firebase Authentication
-
-1. Crea un proyecto en [Firebase Console](https://console.firebase.google.com/) y registra una aplicación web.
-2. En **Authentication → Sign-in method**, habilita los proveedores **Correo electrónico/contraseña** y **Google**. Al habilitar Google, selecciona el correo de asistencia del proyecto.
-3. En **Authentication → Settings → Authorized domains**, comprueba que `localhost` esté en la lista para desarrollo y añade el dominio del sitio al publicarlo.
-4. En **Authentication → Users**, crea las cuentas autorizadas que usarán correo y contraseña. El acceso con Google puede crear el usuario al iniciar sesión por primera vez; no hay un formulario de registro propio en la aplicación.
-5. Copia `.env.example` como `.env.local` y completa sus variables con los valores de configuración de la aplicación web de Firebase:
+1. Create a new project in the [Firebase Console](https://console.firebase.google.com/) and register a web app.
+2. Navigate to **Authentication → Sign-in method** and enable both **Email/Password** and **Google** providers (make sure to select a project support email for Google).
+3. Go to **Authentication → Settings → Authorized domains**, ensure `localhost` is listed for local development, and add your production domain once deployed.
+4. Under **Authentication → Users**, manually create the authorized accounts for Email/Password login. Google sign-in automatically provisions user accounts on first login (there is no public sign-up form in the app).
+5. Duplicate `.env.example` as `.env.local` and populate it with your Firebase web app credentials:
 
    ```powershell
+   # Windows (PowerShell)
    Copy-Item .env.example .env.local
    ```
 
-   En macOS o Linux puedes usar `cp .env.example .env.local`. Copia solo el valor de cada campo del objeto `firebaseConfig`: no incluyas el nombre (`apiKey:`), las comillas que lo rodean ni la coma final. Reinicia `npm run dev` después de editar `.env.local` para que Vite vuelva a cargarlo.
+   ```bash
+   # macOS / Linux
+   cp .env.example .env.local
+   ```
 
-La ruta `/administrator` requiere una sesión de Firebase; al iniciar sesión desde `/login` con correo o Google, se redirige al panel. También puedes solicitar el restablecimiento de contraseña desde el formulario.
+   > **Note:** Paste only the raw string values from your `firebaseConfig` object—omit property keys (e.g., `apiKey:`), surrounding quotes, and trailing commas. Restart `npm run dev` after saving `.env.local` so Vite loads the new variables.
 
-El botón de Google abre una ventana emergente. Si Firebase muestra `auth/unauthorized-domain`, agrega el dominio de desarrollo o producción en **Authentication → Settings → Authorized domains**. El login no necesita variables adicionales a las de `.env.local`.
+### Security & Route Guard Notes
 
-La configuración web (`apiKey`, `authDomain`, etc.) es pública en una aplicación cliente y no reemplaza las reglas de seguridad. **Nunca** incluyas claves privadas de cuentas de servicio ni credenciales del Admin SDK en variables `VITE_*` o en el frontend. El panel actual es una maqueta y el control de ruta solo verifica que exista una sesión; todavía no valida roles administrativos. Antes de conectar datos o acciones privadas, aplica autorización en un backend y reglas de seguridad de Firebase.
+- Signing in at `/login` redirects authenticated users to `/administrator`, which requires an active Firebase session. Password resets can also be triggered directly from the login form.
+- Google sign-in uses a pop-up flow. If you encounter an `auth/unauthorized-domain` error, verify that your active domain is listed under **Authorized domains** in Firebase.
+- Client-side Firebase config values (`apiKey`, `authDomain`, etc.) are public by design and do not replace backend authorization. **Never** expose service account private keys or Admin SDK credentials in `VITE_*` environment variables.
+- The current admin dashboard is a UI prototype; route protection only checks for an active session and does not validate user roles. Enforce role-based access control (RBAC) on a backend and configure Firebase Security Rules before connecting real data or privileged actions.
 
-## Publicar en Netlify
+## Deploying to Netlify
 
-El archivo `netlify.toml` configura `npm run build`, publica la carpeta `dist` y redirige las rutas de React a `index.html`, para que funcionen los enlaces directos y las recargas.
+The included `netlify.toml` file automatically configures the build command (`npm run build`), sets the publish directory (`dist`), and handles SPA routing fallbacks to `index.html` so direct URLs and page refreshes work seamlessly.
 
-1. Sube el repositorio a GitHub y en Netlify selecciona **Add new site → Import an existing project**.
-2. Selecciona el repositorio. Netlify tomará la configuración de `netlify.toml`; los valores son **Build command** `npm run build` y **Publish directory** `dist`.
-3. En **Site configuration → Environment variables**, agrega las seis variables `VITE_FIREBASE_*` listadas en `.env.example`, usando solo los valores de la configuración web Firebase, sin comillas ni coma final. Configúralas para Production y, si vas a probar deploy previews, para ese contexto también.
-4. Después del primer deploy, copia el dominio asignado por Netlify (por ejemplo, `mi-academia.netlify.app`) y agrégalo, sin `https://` ni rutas, en **Firebase Console → Authentication → Settings → Authorized domains**. Agrega también el dominio personalizado si lo utilizas. Para deploy previews, autoriza el dominio exacto de preview que vayas a probar.
-5. Si agregas o cambias variables de entorno, vuelve a desplegar el sitio. Comprueba `/login`, el acceso con Google y la carga directa de `/administrator`.
+1. Push your code to GitHub, then open Netlify and select **Add new site → Import an existing project**.
+2. Choose your repository. Netlify will automatically detect the settings from `netlify.toml`.
+3. Navigate to **Site configuration → Environment variables** and add the six `VITE_FIREBASE_*` keys defined in `.env.example` (raw values only, no quotes or trailing commas). Enable them for **Production** (and **Deploy Previews**, if needed).
+4. Once deployed, copy your assigned Netlify domain (e.g., `my-academy.netlify.app`) and add it—without `https://` or trailing slashes—to **Firebase Console → Authentication → Settings → Authorized domains**. Repeat this for any custom domains or specific preview URLs you plan to test.
+5. Trigger a redeploy whenever you modify environment variables, then verify `/login`, Google OAuth, and direct navigation to `/administrator`.
 
-Las variables `VITE_*` se incorporan al bundle del navegador y no son secretos. No configures claves privadas del Admin SDK en Netlify para esta aplicación frontend.
+> **Reminder:** All `VITE_*` variables are bundled into client-side assets and are publicly readable. Never store Admin SDK secrets in Netlify for this frontend app.
 
-## Rutas principales
+## Application Routes
 
-| Ruta | Contenido |
-| --- | --- |
-| `/` | Inicio de CryptoSchool |
-| `/login` | Inicio y restablecimiento de sesión Firebase |
-| `/courses` | Catálogo de cursos |
-| `/courses/bitcoin-basics` | Fundamentos de Bitcoin y blockchain |
-| `/courses/crypto-security` | Seguridad y autocustodia |
-| `/courses/defi-essentials` | Introducción a DeFi |
-| `/stocks` | Guía educativa de activos digitales |
-| `/meteora-pools` | Pools DLMM en tendencia |
-| `/administrator` | Panel de demostración, disponible para usuarios autenticados |
+| Route | Description |
+| :--- | :--- |
+| `/` | CryptoSchool landing page |
+| `/login` | Firebase sign-in and password recovery |
+| `/courses` | Course catalog |
+| `/courses/bitcoin-basics` | Bitcoin and blockchain fundamentals |
+| `/courses/crypto-security` | Wallet security and self-custody |
+| `/courses/defi-essentials` | Introduction to DeFi |
+| `/stocks` | Educational digital asset directory |
+| `/meteora-pools` | Trending Meteora DLMM pools |
+| `/administrator` | Demo dashboard (authenticated users only) |
 
-## Datos y limitaciones
+## Scope & Limitations
 
-- **Firebase:** el login requiere configurar `.env.local` y habilitar Email/Password y Google en Firebase Console. Las cuentas de correo se crean en la consola; Google puede crear la cuenta al primer acceso.
-- **Administrador:** es una maqueta con métricas y cursos ilustrativos. La ruta exige autenticación, pero no hay roles, backend ni operaciones de gestión conectadas.
-- **Activos:** la página `/stocks` ofrece descripciones educativas; no muestra precios ni sugiere comprar o vender.
-- **Ticker:** las cotizaciones dependen de la conexión del navegador con el WebSocket público de Binance y pueden no estar disponibles en todas las redes o regiones.
-- **Meteora:** `/meteora-pools` consulta la API pública de Meteora y necesita conexión a internet. Los datos pueden variar y no predicen resultados futuros.
+- **Authentication:** Requires a configured `.env.local` file and active providers in Firebase Console. Email accounts must be pre-created in the console, while Google accounts are created on first sign-in.
+- **Admin Panel:** Prototype interface displaying mock metrics and courses. No backend APIs, user roles, or CRUD operations are wired up yet.
+- **Asset Directory (`/stocks`):** Strictly educational; does not display live prices or provide buy/sell signals.
+- **Price Ticker:** Relies on a client-side connection to Binance's public WebSocket API, which may be restricted on certain networks or regions.
+- **Meteora Explorer (`/meteora-pools`):** Fetches live data from Meteora's public API. Displayed metrics fluctuate in real time and do not guarantee future performance.
 
-## Estructura del proyecto
+## Project Structure
 
 ```text
 src/
-├── components/shared/     # Navegación y pie de página
-├── pages/                 # Inicio, login, cursos, activos y vistas
-├── App.jsx                # Rutas y estructura general
-├── academy.css            # Estilos de la academia
-├── CryptoTicker.jsx       # Cotizaciones en tiempo real
-└── main.jsx               # Punto de entrada de React
+├── components/shared/     # Reusable navigation and footer components
+├── pages/                 # Route views (Home, Login, Courses, Assets, Admin, etc.)
+├── App.jsx                # Routing configuration and main layout
+├── academy.css            # Custom platform styles
+├── CryptoTicker.jsx       # Real-time WebSocket price ticker
+└── main.jsx               # Application entry point
 ```
 
-## Licencia
+✨ Author
+Created by Pablo Germán Jiménez
+Design inspired by 💥 hip-hop vibes from Bboy Linkin
 
-Este repositorio no declara una licencia de uso. Añade una licencia antes de distribuir o reutilizar el proyecto.
+###### [Access to profile GitHub](https://github.com/Pablo-German-Jimenez)💻
+###### [Access to profile Linkedin](https://www.linkedin.com/in/pablo-german-jimenez-0b706a200/)📊
+
+#💥 Break-boy for ever🎵 
+
+ ![🔥#Bboys on fire 🎵 ](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG11M2dtOHdnYWUxN3N6NTFoZ2t5Z24xcmV5djJjcjI4ODlyZ3duZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ANFZtmUiXncuUmKMwY/giphy.gif)
+
